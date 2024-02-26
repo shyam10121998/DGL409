@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayaking Activities</title>
+    <style>
+        /* Add your custom CSS styling here */
+        .activity, .rental {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 300px;
+        }
+
+        .activity img, .rental img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Display nearby kayaking activities -->
+        <h2>Nearby Kayaking Activities</h2>
+        <div id="kayaking-activities">
+            <!-- Activities will be dynamically added here -->
+        </div>
+
+        <!-- Display kayak rentals -->
+        <h2>Kayak Rentals</h2>
+        <div id="kayak-rentals">
+            <!-- Rentals will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch nearby kayaking activities
+        function fetchNearbyKayakingActivities(latitude, longitude) {
+          const apiKey = 'AIzaSyDtOEtcnrjVWnTea8XNCQ52KUOAb0_US8o'; // Replace with your own API key
+            const radius = 5000; // Radius in meters (adjust as needed)
+            const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=${radius}&keyword=kayak&key=${apiKey}`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const activities = data.results;
+                    const activitiesContainer = document.getElementById('kayaking-activities');
+
+                    activities.forEach(activity => {
+                        const name = activity.name;
+                        const address = activity.vicinity;
+                        const rating = activity.rating || 'N/A';
+                        const photoUrl = activity.photos ? activity.photos[0].getUrl() : '';
+
+                        const activityHTML = `
+                            <div class="activity">
+                                <h3>${name}</h3>
+                                <p>Address: ${address}</p>
+                                <p>Rating: ${rating}</p>
+                                <img src="${photoUrl}" alt="${name}">
+                            </div>
+                        `;
+                        activitiesContainer.insertAdjacentHTML('beforeend', activityHTML);
+                    });
+                })
+                .catch(error => console.error('Error fetching nearby kayaking activities:', error));
+        }
+
+        // Get user's current location and call the function to fetch nearby kayaking activities
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    fetchNearbyKayakingActivities(latitude, longitude);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Call the function to get user's location and fetch nearby kayaking activities
+        getLocation();
+    </script>
+</body>
+</html>
