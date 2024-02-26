@@ -177,3 +177,55 @@
     margin-top: 10px;
 }
   
+/* high.html*/
+
+/* Header styling */
+.header {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Activity container styling */
+.activity-container {
+    margin: 20px auto;
+    width: 60%;
+}
+
+/* Activity grid styling */
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    height: 500px;
+}
+
+/* Individual activity box styling */
+.activity {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.activity a {
+    text-decoration: none;
+    color: #333;
+}
+
+.activity:hover {
+    background-color: #e0e0e0;
+}
