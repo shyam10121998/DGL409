@@ -92,3 +92,88 @@
     color: white;
 }
 
+
+/* Place details */
+.place-details {
+    background-color: #ffffff;
+    color: orangered;
+    padding: 20px;
+    margin-top: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .place-details p {
+    margin: 5px 0;
+  }
+  
+  .place-details img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Search bar and button */
+  #place,
+  #distance {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  #search-button {
+    padding: 10px 20px;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  #search-button:hover {
+    background-color: black;
+  }
+
+  .search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-container input[type="text"],
+.search-container button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Map container styling */
+.map-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Results container styling */
+.results-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.results-container img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+  
