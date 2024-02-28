@@ -211,3 +211,20 @@
 .activity:hover {
     background-color: #e0e0e0;
 }
+
+/* KAYAKING */
+
+#map {
+    height: 400px;
+    width: 100%;
+  }
+
+  #place-details {
+    margin-top: 20px;
+  }
+
+  .place-detail {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
