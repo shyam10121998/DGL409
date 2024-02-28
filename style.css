@@ -196,16 +196,19 @@
 
 /* Individual activity box styling */
 .activity {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ccc;
+    background-color: rgb(243, 90, 34);
+    padding: 100px;
+    border: 1px solid black;
     border-radius: 5px;
     text-align: center;
 }
 
 .activity a {
     text-decoration: none;
-    color: #333;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .activity:hover {

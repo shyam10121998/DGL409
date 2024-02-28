@@ -8,12 +8,14 @@
 </head>
 <body>
 
-<div class="activity-container">
+    <div class="energy-level">
   <h2>Swimming Activities</h2>
   <p>Enter your desired distance from current location:</p>
   <div class="search-container">
     <input type="text" id="distance" placeholder="Distance (in meters)">
     <button onclick="searchNearbyActivities('swimming')">Search Nearby Swimming Activities</button>
+    <label for="free-toggle">Free Only:</label>
+    <input type="checkbox" id="free-toggle" onchange="toggleFree()">
   </div>
 
   <div class="map-container">
@@ -27,6 +29,7 @@
   let service;
   let infowindow;
   let markers = [];
+  let freeOnly = false;
 
   function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -82,7 +85,9 @@
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       clearMarkers();
       for (let i = 0; i < results.length; i++) {
-        createMarker(results[i]);
+        if (!freeOnly || (results[i].price_level === 0 && results[i].rating >= 3)) {
+          createMarker(results[i]);
+        }
       }
     }
   }
@@ -129,6 +134,11 @@
       markers[i].setMap(null);
     }
     markers = [];
+  }
+
+  function toggleFree() {
+    freeOnly = !freeOnly;
+    searchNearbyActivities('swimming');
   }
 </script>
 

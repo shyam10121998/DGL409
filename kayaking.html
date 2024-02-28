@@ -13,7 +13,9 @@
   <p>Enter your desired distance from current location:</p>
   <div class="search-container">
     <input type="text" id="distance" placeholder="Distance (in meters)">
-    <button onclick="searchNearbyKayaking()">Search Nearby Kayaking Activities</button>
+    <button onclick="searchNearbyActivities('kayaking')">Search Nearby kayaking Activities</button>
+    <label for="free-toggle">Free Only:</label>
+    <input type="checkbox" id="free-toggle" onchange="toggleFree()">
   </div>
 
   <div class="map-container">
@@ -27,7 +29,8 @@
   let service;
   let infowindow;
   let markers = [];
-  
+  let freeOnly = false;
+
   function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: -34.397, lng: 150.644 },
@@ -36,7 +39,7 @@
     infowindow = new google.maps.InfoWindow();
     getLocation();
   }
-  
+
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -44,7 +47,7 @@
       alert("Geolocation is not supported by this browser.");
     }
   }
-  
+
   function showPosition(position) {
     const latLng = new google.maps.LatLng(
       position.coords.latitude,
@@ -57,51 +60,53 @@
     });
     infowindow.setContent("You are here!");
     infowindow.open(map, marker);
-    searchNearbyKayaking();
+    searchNearbyActivities('kayaking');
   }
-  
-  function searchNearbyKayaking() {
+
+  function searchNearbyActivities(activityType){
     const distance = document.getElementById("distance").value;
-  
+
     if (!distance || isNaN(distance) || distance <= 0) {
       alert("Please enter a valid distance (in meters).");
       return;
     }
-  
+
     const request = {
       location: map.getCenter(),
       radius: distance,
       query: "kayak",
     };
-  
+
     service = new google.maps.places.PlacesService(map);
     service.textSearch(request, callback);
   }
-  
+
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       clearMarkers();
       for (let i = 0; i < results.length; i++) {
-        createMarker(results[i]);
+        if (!freeOnly || (results[i].price_level === 0 && results[i].rating >= 3)) {
+          createMarker(results[i]);
+        }
       }
     }
   }
-  
+
   function createMarker(place) {
     const marker = new google.maps.Marker({
       map,
       position: place.geometry.location,
     });
-  
+
     markers.push(marker);
-  
+
     google.maps.event.addListener(marker, "click", () => {
       infowindow.setContent(place.name);
       infowindow.open(map, marker);
       showPlaceDetails(place);
     });
   }
-  
+
   function showPlaceDetails(place) {
     const detailsContainer = document.getElementById("place-details");
     const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : '';
@@ -123,12 +128,17 @@
       <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
     `;
   }
-  
+
   function clearMarkers() {
     for (let i = 0; i < markers.length; i++) {
       markers[i].setMap(null);
     }
     markers = [];
+  }
+
+  function toggleFree() {
+    freeOnly = !freeOnly;
+    searchNearbyActivities('kayaking');
   }
 </script>
 <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtOEtcnrjVWnTea8XNCQ52KUOAb0_US8o&callback=initMap&libraries=places"></script>
