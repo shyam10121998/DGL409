@@ -38,9 +38,9 @@
     </div>
     <img src="#" alt="FitFinder Logo" class="logo">
     <div class="nav">
-      <a href="contact.html">Contact Us</a>
-      <a href="stories.html">Stories</a>
-      <a href="services.html">Services</a>
+      <a href="contact.php">Contact Us</a>
+      <a href="stories.php">Stories</a>
+      <a href="services.php">Services</a>
     </div>
 </div>
 
@@ -48,9 +48,9 @@
  <div class="energy-level">
     <h2>Hey shyam! we will help you finding perfect fit for you <br> What's Your Energy Level?</h2>
     <div class="level-options">
-      <a href="high.html" class="level high">High</a>
-      <a href="moderate.html" class="level moderate">Moderate</a>
-      <a href="low.html" class="level low">Low</a>
+      <a href="high.php" class="level high">High</a>
+      <a href="moderate.php" class="level moderate">Moderate</a>
+      <a href="low.php" class="level low">Low</a>
     </div>
     <h2>or</h2>
     <h2>You can search anything of your choice</h2>

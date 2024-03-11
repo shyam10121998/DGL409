@@ -15,6 +15,12 @@
     <div class="activity-container">
         <!-- Low energy activities grid -->
         <div class="activity-grid">
+        <div class="activity">
+                <a href="walking.php">Walking</a>
+            </div>
+            <div class="activity">
+                <a href="meditation.php">Meditation</a>
+            </div>
             <div class="activity">
                 <a href="parks.html">Parks</a>
             </div>
