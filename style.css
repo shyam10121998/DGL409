@@ -174,8 +174,6 @@
 .map-container {
     margin-top: 20px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 /* Results container styling */
@@ -208,13 +206,13 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
-    height: 500px;
+    height: 200;
 }
 
 /* Individual activity box styling */
 .activity {
     background-color: #0E8FC7;
-    padding: 100px;
+    padding: 50px;
     border: 2px solid black;
     border-radius: 5px;
     text-align: center;
@@ -230,7 +228,8 @@
 
 .activity:hover {
     background-color: #676363;
-    border-color: white;
+    color: white;
+    border-color: gold;
 }
 
 /*activities*/
