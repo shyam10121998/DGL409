@@ -8,20 +8,31 @@
 </head>
 <body>
 
+
+  <header class="header">
+    <div class="nav">
+        <a href="contact.html">Contact Us</a>
+        <a href="stories.html">Stories</a>
+        <a href="services.html">Services</a>
+        <img src="#" alt="FitFinder Logo" class="logo">
+      </div>
+</header>
+
+<img src="images/kayaking.jpg" style="height: 800px; width: 100%;">
+
 <div class="energy-level">
   <h2>Kayaking Activities</h2>
   <p>Enter your desired distance from current location:</p>
   <div class="search-container">
-    <input type="text" id="distance" placeholder="Distance (in meters)">
     <button onclick="searchNearbyActivities('kayaking')">Search Nearby kayaking Activities</button>
     <label for="free-toggle">Free Only:</label>
     <input type="checkbox" id="free-toggle" onchange="toggleFree()">
   </div>
+</div>
 
-  <div class="map-container">
-    <div id="map" style="height: 400px; width: 100%;"></div>
-    <div id="place-details" class="results-container"></div>
-  </div>
+<div class="map-container">
+  <div id="map" style="height: 400px; width: 50%;"></div>
+  <div id="place-details" class="results-container"></div>
 </div>
 
 <script>
@@ -60,21 +71,15 @@
     });
     infowindow.setContent("You are here!");
     infowindow.open(map, marker);
-    searchNearbyActivities('kayaking');
+
   }
 
-  function searchNearbyActivities(activityType){
-    const distance = document.getElementById("distance").value;
-
-    if (!distance || isNaN(distance) || distance <= 0) {
-      alert("Please enter a valid distance (in meters).");
-      return;
-    }
-
+  function searchNearbyActivities(activityType) {
+    clearMarkers();
     const request = {
       location: map.getCenter(),
-      radius: distance,
-      query: "kayak",
+      radius: 1000, // Set a default radius (in meters)
+      query: activityType,
     };
 
     service = new google.maps.places.PlacesService(map);
@@ -83,12 +88,13 @@
 
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      clearMarkers();
       for (let i = 0; i < results.length; i++) {
-        if (!freeOnly || (results[i].price_level === 0 && results[i].rating >= 3)) {
+        if (!freeOnly || (results[i].price_level === 0)) {
           createMarker(results[i]);
         }
       }
+    } else {
+      alert("No kayaking trails found nearby. Please try again later or adjust your search settings.");
     }
   }
 
