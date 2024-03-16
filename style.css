@@ -195,42 +195,7 @@
 /* high.html*/
 /* headeer footer left*/
 
-/* Activity container styling */
-.activity-container {
-    margin: 20px auto;
-    width: 60%;
-}
 
-/* Activity grid styling */
-.activity-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-    height: 200;
-}
-
-/* Individual activity box styling */
-.activity {
-    background-color: #0E8FC7;
-    padding: 50px;
-    border: 2px solid black;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.activity a {
-    text-decoration: none;
-    text-align: center;
-    color: black;
-    font-size: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.activity:hover {
-    background-color: #676363;
-    color: white;
-    border-color: gold;
-}
 
 /*activities*/
 
