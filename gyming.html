@@ -8,21 +8,31 @@
 </head>
 <body>
 
+  <header class="header">
+    <div class="nav">
+        <a href="contact.html">Contact Us</a>
+        <a href="stories.html">Stories</a>
+        <a href="services.html">Services</a>
+        <img src="#" alt="FitFinder Logo" class="logo">
+      </div>
+</header>
+  <img src="images/gyming.jpg" alt="swimming page banner" style="height: 800px; width: 100%;">
+   
     <div class="energy-level">
   <h2>Gyming Activities</h2>
   <p>Enter your desired distance from current location:</p>
   <div class="search-container">
-    <input type="text" id="distance" placeholder="Distance (in meters)">
     <button onclick="searchNearbyActivities('gym')">Search Nearby Gyming Activities</button>
     <label for="free-toggle">Free Only:</label>
     <input type="checkbox" id="free-toggle" onchange="toggleFree()">
   </div>
+</div>
 
   <div class="map-container">
-    <div id="map" style="height: 400px; width: 100%;"></div>
+    <div id="map" style="height: 400px; width: 50%;"></div>
     <div id="place-details" class="results-container"></div>
   </div>
-</div>
+
 
 <script>
   let map;
@@ -60,20 +70,13 @@
     });
     infowindow.setContent("You are here!");
     infowindow.open(map, marker);
-    searchNearbyActivities('gym');
   }
 
   function searchNearbyActivities(activityType) {
-    const distance = document.getElementById("distance").value;
-
-    if (!distance || isNaN(distance) || distance <= 0) {
-      alert("Please enter a valid distance (in meters).");
-      return;
-    }
-
+    clearMarkers();
     const request = {
       location: map.getCenter(),
-      radius: distance,
+      radius: 1000, // Set a default radius (in meters)
       query: activityType,
     };
 

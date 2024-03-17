@@ -20,7 +20,6 @@
   <h2>Biking Activities</h2>
   <p>Enter your desired distance from current location:</p>
   <div class="search-container">
-    <input type="text" id="distance" placeholder="Distance (in meters)">
     <button onclick="searchNearbyActivities('bike')">Search Nearby Biking Activities</button>
     <label for="free-toggle">Free Only:</label>
     <input type="checkbox" id="free-toggle" onchange="toggleFree()">
@@ -67,26 +66,18 @@
     });
     infowindow.setContent("You are here!");
     infowindow.open(map, marker);
-    searchNearbyActivities('bike');
   }
 
   function searchNearbyActivities(activityType) {
-    const distance = document.getElementById("distance").value;
+      const request = {
+        location: map.getCenter(),
+        radius: 1000, // Set a default radius (in meters)
+        query: activityType,
+      };
 
-    if (!distance || isNaN(distance) || distance <= 0) {
-      alert("Please enter a valid distance (in meters).");
-      return;
+      service = new google.maps.places.PlacesService(map);
+      service.textSearch(request, callback);
     }
-
-    const request = {
-      location: map.getCenter(),
-      radius: distance,
-      query: activityType,
-    };
-
-    service = new google.maps.places.PlacesService(map);
-    service.textSearch(request, callback);
-  }
 
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
