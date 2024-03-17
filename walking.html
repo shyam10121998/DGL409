@@ -8,19 +8,31 @@
 </head>
 <body>
 
+  <header class="header">
+    <div class="nav">
+        <a href="contact.html">Contact Us</a>
+        <a href="stories.html">Stories</a>
+        <a href="services.html">Services</a>
+        <img src="#" alt="FitFinder Logo" class="logo">
+      </div>
+</header>
+ <img src="images/tree-5102896_1280.jpg" alt="biking page banner" style="height: 800px; width: 100%;">
+    
+
 <div class="energy-level">
   <h2>Walking Activities</h2>
+  <p>Enter your desired distance from current location:</p>
   <div class="search-container">
     <button onclick="searchNearbyActivities('walking')">Search Nearby Walking Trails</button>
     <label for="free-toggle">Free Only:</label>
     <input type="checkbox" id="free-toggle" onchange="toggleFree()">
   </div>
+</div>
 
   <div class="map-container">
-    <div id="map" style="height: 400px; width: 100%;"></div>
+    <div id="map" style="height: 400px; width: 50%;"></div>
     <div id="place-details" class="results-container"></div>
   </div>
-</div>
 
 <script>
   let map;
