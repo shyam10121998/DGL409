@@ -15,6 +15,19 @@
         <img src="#" alt="FitFinder Logo" class="logo">
       </div>
 </header>
- 
+<img src="images/meditate-1851165_1920.jpg" alt="meditation page banner" style="height: 800px; width: 100%;">
+<div class="energy-level">
+<h2>Meditation Activities</h2>
+<p>Enter your desired distance from current location:</p>
+<div class="search-container">
+<button onclick="searchNearbyActivities('meditation')">Search Nearby Meditation Activities</button>
+<label for="free-toggle">Free Only:</label>
+<input type="checkbox" id="free-toggle" onchange="toggleFree()">
+</div>
+</div>
+<div class="map-container">
+<div id="map" style="height: 400px; width: 50%;"></div>
+<div id="place-details" class="results-container"></div>
+</div>
 </body>
 </html>
