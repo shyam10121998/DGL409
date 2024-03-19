@@ -19,8 +19,7 @@ require_once './db_connection.php';
         <h2>Hiking Activities</h2>
         <p>Enter your desired distance from current location:</p>
         <div class="search-container">
-            <input type="text" id="distance" placeholder="Distance (in meters)">
-            <button onclick="searchNearbyActivities('hiking')">Search Nearby hiking Activities</button>
+           <button onclick="searchNearbyActivities('hiking')">Search Nearby hiking Activities</button>
             <label for="free-toggle">Free Only:</label>
             <input type="checkbox" id="free-toggle" onchange="toggleFree()">
         </div>
