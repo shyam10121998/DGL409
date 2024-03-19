@@ -29,7 +29,7 @@ require_once './db_connection.php';
     <button onclick="searchNearbyActivities('gardening')">Search Nearby Gardening Spots</button>
     <label for="free-toggle">Free Only:</label>
     <input type="checkbox" id="free-toggle" onchange="toggleFree()">
-  </div>ff
+  </div>
   </div>
 
   <div class="map-container">
