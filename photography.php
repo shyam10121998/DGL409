@@ -165,7 +165,13 @@ if ($result->num_rows > 0) {
 
   function toggleFree() {
     freeOnly = !freeOnly;
-    searchNearbyActivities('photography');
+    const contentDiv = document.getElementById("content");
+      contentDiv.hidden = !event.target.checked;
+      if (event.target.checked) {
+        $("#content").show();
+      } else {
+        $("#content").hide();
+      }
   }
 </script>
 
