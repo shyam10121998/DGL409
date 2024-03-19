@@ -74,6 +74,30 @@ require_once './db_connection.php';
             getLocation();
         }
 
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            const latLng = new google.maps.LatLng(
+                position.coords.latitude,
+                position.coords.longitude
+            );
+            map.setCenter(latLng);
+            const marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+            });
+            infowindow.setContent("You are here!");
+            infowindow.open(map, marker);
+            searchNearbyActivities('gym');
+        }
+
+
     </script>
 </body>
 </html>
