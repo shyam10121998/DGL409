@@ -46,7 +46,8 @@
 
  <!-- Energy Level Content -->
  <div class="energy-level">
-    <h2>Hey shyam! we will help you finding perfect fit for you <br> What's Your Energy Level?</h2>
+    <h2>Hey   <?php session_start();
+      ($_SESSOION['fullName'] ? $_SESSOION['fullName'] : 'VISITOR') ?>!  we will help you finding perfect fit for you <br> What's Your Energy Level?</h2>
     <div class="level-options">
       <a href="high.html" class="level high">High</a>
       <a href="moderate.html" class="level moderate">Moderate</a>
