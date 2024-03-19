@@ -78,4 +78,21 @@ if ($result->num_rows > 0) {
             alert("Geolocation is not supported by this browser.");
         }
     }
+
+    function showPosition(position) {
+        const latLng = new google.maps.LatLng(
+            position.coords.latitude,
+            position.coords.longitude
+        );
+        map.setCenter(latLng);
+        const marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+        });
+        infowindow.setContent("You are here!");
+        infowindow.open(map, marker);
+    }
+
+    
+
     </script>
