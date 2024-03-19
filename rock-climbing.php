@@ -122,7 +122,21 @@ if ($result->num_rows > 0) {
                 }
             }
         }
-        
+        function createMarker(place) {
+            const marker = new google.maps.Marker({
+                map,
+                position: place.geometry.location,
+            });
+
+            markers.push(marker);
+
+            google.maps.event.addListener(marker, "click", () => {
+                infowindow.setContent(place.name);
+                infowindow.open(map, marker);
+                showPlaceDetails(place);
+            });
+        }
+
     </script>
 </body>
 </html>
