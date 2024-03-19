@@ -135,5 +135,34 @@ if ($result->num_rows > 0) {
             showPlaceDetails(place);
         });
     }
+    function showPlaceDetails(place) {
+        const detailsContainer = document.getElementById("place-details");
+        const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : '';
+        let openingHours = place.opening_hours ? (place.opening_hours.open_now ? 'Yes' : 'No') : 'N/A';
+
+        if (place.opening_hours && place.opening_hours.weekday_text) {
+            openingHours = '';
+            place.opening_hours.weekday_text.forEach(time => {
+                openingHours += `${time}<br>`;
+            });
+        }
+
+        detailsContainer.innerHTML = `
+      <p><strong>Name:</strong> ${place.name}</p>
+      <p><strong>Address:</strong> ${place.formatted_address}</p>
+      <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
+      <p><strong>Open Now:</strong> ${openingHours}</p>
+      <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
+      <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
+    `;
+    }
+
+    function clearMarkers() {
+        for (let i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+    }
+
 
     </script>
