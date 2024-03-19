@@ -179,10 +179,9 @@ require_once './db_connection.php';
                 $("#content").hide();
             }
         }
-
+        </script>
 
         <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtOEtcnrjVWnTea8XNCQ52KUOAb0_US8o&callback=initMap&libraries=places">
-    </script>
     </script>
 </body>
 </html>
