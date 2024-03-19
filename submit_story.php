@@ -37,5 +37,26 @@ try {
             }
         }
     }
+    $placeName = $_POST['place_name'];
+    $date_of_travel = $_POST['date_of_travel'];
+    $rating = $_POST['rating'];
+    $likes = $_POST['likes'];
+    $notes = $_POST['notes'];
 
+    if ($placeName && $date_of_travel && $rating  && $likes && $notes) {
+
+        $firstPhoto = $_FILES["photos"]["name"][0];
+
+        $storyInsertSql = "INSERT INTO `stories` 
+            (`place_name`,`date_of_travel`,`rating`,`likes`,`notes`,`image`) VALUES
+            ('$placeName','$date_of_travel','$rating','$likes','$notes','$firstPhoto')";
+
+        $result = $conn->query($storyInsertSql);
+
+        header('Location: stories.php');
+    } else {
+        die('All Fields Are required');
+    }
+} catch (Exception $e) {
+    die($e->getMessage());
 }
