@@ -111,6 +111,18 @@ if ($result->num_rows > 0) {
             service = new google.maps.places.PlacesService(map);
             service.textSearch(request, callback);
         }
+        
+        function callback(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                clearMarkers();
+                for (let i = 0; i < results.length; i++) {
+                    if (!freeOnly || (results[i].price_level === 0 && results[i].rating >= 3)) {
+                        createMarker(results[i]);
+                    }
+                }
+            }
+        }
+        
     </script>
 </body>
 </html>
