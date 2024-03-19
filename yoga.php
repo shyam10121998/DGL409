@@ -167,6 +167,19 @@ require_once './db_connection.php';
             markers = [];
         }
 
+        function toggleFree() {
+            freeOnly = !freeOnly;
+            // searchNearbyActivities('yoga');
+
+            const contentDiv = document.getElementById("content");
+            contentDiv.hidden = !event.target.checked;
+            if (event.target.checked) {
+                $("#content").show();
+            } else {
+                $("#content").hide();
+            }
+        }
+
 
 
     </script>
