@@ -93,6 +93,21 @@ if ($result->num_rows > 0) {
         infowindow.open(map, marker);
     }
 
-    
+    function searchNearbyActivities(activityType) {
+        const distance = document.getElementById("distance").value;
+
+        if (!distance || isNaN(distance) || distance <= 0) {
+            alert("Please enter a valid distance (in meters).");
+            return;
+        }
+        const request = {
+            location: map.getCenter(),
+            radius: distance,
+            query: activityType,
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
+    }
 
     </script>
