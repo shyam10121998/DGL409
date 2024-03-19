@@ -24,10 +24,11 @@ require_once './db_connection.php';
             <label for="free-toggle">Free Only:</label>
             <input type="checkbox" id="free-toggle" onchange="toggleFree()">
         </div>
+    </div>
 
         <div class="map-container">
             <div id="map" style="height: 400px; width: 100%;"></div>
-            <div id="place-details" class="results-container">
+            <div id="place-details" class="results-container"> </div>
             <div id="content">
             <?php
 
@@ -49,8 +50,35 @@ if ($result->num_rows > 0) {
 
 ?>
             </div>
-            </div>
-        </div>
+        
     </div>
+
+    <script>
+        let map;
+        let service;
+        let infowindow;
+        let markers = [];
+        let freeOnly = false;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                    lat: -34.397,
+                    lng: 150.644
+                },
+                zoom: 15,
+            });
+            infowindow = new google.maps.InfoWindow();
+            getLocation();
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
 </body>
 </html>
