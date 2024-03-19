@@ -79,6 +79,38 @@ if ($result->num_rows > 0) {
                 alert("Geolocation is not supported by this browser.");
             }
         }
+        function showPosition(position) {
+            const latLng = new google.maps.LatLng(
+                position.coords.latitude,
+                position.coords.longitude
+            );
+            map.setCenter(latLng);
+            const marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+            });
+            infowindow.setContent("You are here!");
+            infowindow.open(map, marker);
+            searchNearbyActivities('gym');
+        }
+
+        function searchNearbyActivities(activityType) {
+            const distance = document.getElementById("distance").value;
+
+            if (!distance || isNaN(distance) || distance <= 0) {
+                alert("Please enter a valid distance (in meters).");
+                return;
+            }
+
+            const request = {
+                location: map.getCenter(),
+                radius: distance,
+                query: activityType,
+            };
+
+            service = new google.maps.places.PlacesService(map);
+            service.textSearch(request, callback);
+        }
     </script>
 </body>
 </html>
