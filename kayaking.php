@@ -172,8 +172,18 @@ require_once './db_connection.php';
 
   function toggleFree() {
     freeOnly = !freeOnly;
-    searchNearbyActivities('kayaking');
-  }
+    const contentDiv = document.getElementById("content");
+            contentDiv.hidden = !event.target.checked;
+            if (event.target.checked) {
+                $("#content").show();
+            } else {
+                $("#content").hide();
+            }
+        }
+
+        $(document).ready(function() {
+            $("#content").hide();
+        });
 </script>
 <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtOEtcnrjVWnTea8XNCQ52KUOAb0_US8o&callback=initMap&libraries=places"></script>
 
