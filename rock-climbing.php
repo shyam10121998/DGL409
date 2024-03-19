@@ -91,7 +91,7 @@ if ($result->num_rows > 0) {
             });
             infowindow.setContent("You are here!");
             infowindow.open(map, marker);
-            searchNearbyActivities('gym');
+    
         }
 
         function searchNearbyActivities(activityType) {
@@ -120,7 +120,9 @@ if ($result->num_rows > 0) {
                         createMarker(results[i]);
                     }
                 }
-            }
+            }else {
+      alert("No rock-climbing activities found nearby. Please try again later or adjust your search settings.");
+    }
         }
         function createMarker(place) {
             const marker = new google.maps.Marker({
@@ -165,7 +167,18 @@ if ($result->num_rows > 0) {
             }
             markers = [];
         }
+        function toggleFree() {
+            freeOnly = !freeOnly;
+            // searchNearbyActivities('rock-climbing');
 
+            const contentDiv = document.getElementById("content");
+            contentDiv.hidden = !event.target.checked;
+            if (event.target.checked) {
+                $("#content").show();
+            } else {
+                $("#content").hide();
+            }
+        }
     </script>
 </body>
 </html>

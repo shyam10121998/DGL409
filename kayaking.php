@@ -102,10 +102,15 @@ require_once './db_connection.php';
   }
 
   function searchNearbyActivities(activityType) {
-    clearMarkers();
+    const distance = document.getElementById("distance").value;
+
+            if (!distance || isNaN(distance) || distance <= 0) {
+                alert("Please enter a valid distance (in meters).");
+                return;
+            }
     const request = {
       location: map.getCenter(),
-      radius: 1000, // Set a default radius (in meters)
+      radius: distance, // Set a default radius (in meters)
       query: activityType,
     };
 
