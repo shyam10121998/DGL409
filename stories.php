@@ -23,8 +23,8 @@ if (!$_SESSION['fullName']) {
         <img src="#" alt="FitFinder Logo" class="logo">
         <div class="nav-stories">
           <a href="contact.html">Contact Us</a>
-          <a href="stories.html">Stories</a>
-          <a href="services.html">Services</a>
+          <a href="stories.php">Stories</a>
+          <a href="services.php">Services</a>
         </div>
     </div>
 

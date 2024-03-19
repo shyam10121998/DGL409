@@ -9,7 +9,7 @@ require_once './db_connection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Gyming Activities</title>
+    <title>Hiking Activities</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
@@ -26,7 +26,7 @@ require_once './db_connection.php';
     </div>
 
         <div class="map-container">
-            <div id="map" style="height: 400px; width: 100%;"></div>
+            <div id="map" style="height: 400px; width: 50%;"></div>
             <div id="place-details" class="results-container">
             <div id="content">
             <?php
@@ -102,7 +102,7 @@ if ($result->num_rows > 0) {
         const request = {
             location: map.getCenter(),
             radius: distance,
-            query: activityType,
+            query: 'hiking',
         };
 
         service = new google.maps.places.PlacesService(map);

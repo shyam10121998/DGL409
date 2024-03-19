@@ -28,8 +28,8 @@
   <div class="header">
     <div class="nav">
       <a href="contact.html">Contact Us</a>
-      <a href="stories.html">Stories</a>
-      <a href="services.html">Services</a>
+      <a href="stories.php">Stories</a>
+      <a href="services.php">Services</a>
     </div>
     <div class="slider-container">
         <div class="slider">
