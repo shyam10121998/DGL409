@@ -55,6 +55,33 @@
     background-color: #ffffff;
     margin-left: 25%;
 }
+#content {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#content p {
+    margin: 10px 0;
+}
+
+#content a {
+    color: #0E8FC7;
+}
+
+#content a:hover {
+    text-decoration: underline;
+}
+
+#content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
 
 
 /* energy level*/

@@ -46,19 +46,18 @@ require_once './db_connection.php';
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<p><strong>Name:</strong>' . $row['name'] . '</p>
-                          <p><strong>Address:</strong> <a href=' . $row['map_link'] . '>' . $row['address'] . '</a></p>
-                          <p><strong>Rating:</strong> ' . $row['rating'] . '</p>
-                          <p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>
-                          <p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>
-                          <img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
-                        }
+                      // Output data of each row
+                      while ($row = $result->fetch_assoc()) {
+                          echo '<div class="activity-container">';
+                          echo '<p><strong>Name:</strong>' . $row['name'] . '</p>';
+                          echo '<p><strong>Address:</strong> <a href="' . $row['map_link'] . '">' . $row['address'] . '</a></p>';
+                          echo '<p><strong>Rating:</strong> ' . $row['rating'] . '</p>';
+                          echo '<p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>';
+                          echo '<p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>';
+                          echo '<img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
+                          echo '</div>';// reference AI
                     }
-                    for ($i = 0; $i <= 5; $i++) {
-                    }
-
+                  }
                     ?>
                 </div>
 </div>
