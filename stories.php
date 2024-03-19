@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+require_once './db_connection.php';
+
+if (!$_SESSION['fullName']) {
+    header('Location:services.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +70,43 @@
             <p><strong>Additional Notes:</strong> An unforgettable adventure filled with wonder and discovery.</p>
         </div>
     </div>
+
+    <?php
+
+    $selectSql = "SELECT * from `stories` ";
+
+
+
+    $result = $conn->query($selectSql);
+
+    if ($result->num_rows > 0) {
+
+
+        while ($row = $result->fetch_assoc()) {
+
+
+            echo "<div class='story-container'>
+          
+          <div class='story-content'>
+            <img src=" . "uploads/" . $row['image'] . " alt='Amazon Rainforest' style='width:150px;height:100px;'/>
+            <p><strong>Place Name:</strong>" . $row['place_name'] . "</p>
+            <p><strong>Date of Travel:</strong> " . $row['date_of_travel'] . "</p>
+            <p><strong>Rating:</strong> " . $row['rating'] . "</p>
+            <p>
+              <strong>What I Liked:</strong> " . $row['likes'] . "
+      
+            </p>
+            <p>
+              <strong>Additional Notes:</strong> " . $row['rating'] . "
+            </p>
+          </div>
+        </div>";
+        }
+    }
+
+    //   
+
+    ?>
 
     <!--story form-->
     <div class="story-form-container">
