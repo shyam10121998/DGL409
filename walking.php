@@ -167,27 +167,15 @@ if ($result->num_rows > 0) {
 
   function toggleFree() {
     freeOnly = !freeOnly;
-    if (freeOnly) {
-      // Send AJAX request to fetch walking activities from the database
-      $.ajax({
-    type: 'POST',
-    url: 'fetch_walking_activities.php', // Update the URL here
-    data: { freeOnly: 1 },
-    success: function(response) {
-        // Handle the response here
-    },
-    error: function(xhr, status, error) {
-        // Handle errors here
-    }
-});
-
-    } else {
-      searchNearbyActivities('walking');
-    }
+    const contentDiv = document.getElementById("content");
+      contentDiv.hidden = !event.target.checked;
+      if (event.target.checked) {
+        $("#content").show();
+      } else {
+        $("#content").hide();
+      }
   }
 </script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtOEtcnrjVWnTea8XNCQ52KUOAb0_US8o&callback=initMap&libraries=places"></script>
 
 </body>
