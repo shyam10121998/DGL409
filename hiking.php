@@ -51,3 +51,31 @@ if ($result->num_rows > 0) {
 ?>
         </div>
     </div>
+
+    <script>
+        let map;
+    let service;
+    let infowindow;
+    let markers = [];
+    let freeOnly = false;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+                lat: -34.397,
+                lng: 150.644
+            },
+            zoom: 15,
+        });
+        infowindow = new google.maps.InfoWindow();
+        getLocation();
+    }
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    </script>
