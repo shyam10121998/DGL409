@@ -8,6 +8,7 @@ require_once './db_connection.php';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <title>Kayaking Activities</title>
 </head>
 <body>
@@ -16,8 +17,8 @@ require_once './db_connection.php';
   <header class="header">
     <div class="nav">
         <a href="contact.html">Contact Us</a>
-        <a href="stories.html">Stories</a>
-        <a href="services.html">Services</a>
+        <a href="stories.php">Stories</a>
+        <a href="services.php">Services</a>
         <img src="#" alt="FitFinder Logo" class="logo">
       </div>
 </header>
@@ -102,15 +103,10 @@ require_once './db_connection.php';
   }
 
   function searchNearbyActivities(activityType) {
-    const distance = document.getElementById("distance").value;
-
-            if (!distance || isNaN(distance) || distance <= 0) {
-                alert("Please enter a valid distance (in meters).");
-                return;
-            }
+    clearMarkers();
     const request = {
       location: map.getCenter(),
-      radius: distance, // Set a default radius (in meters)
+      radius: 1000, // Set a default radius (in meters)
       query: activityType,
     };
 
@@ -158,13 +154,16 @@ require_once './db_connection.php';
     }
 
     detailsContainer.innerHTML = `
+    <div class="activity-container">
       <p><strong>Name:</strong> ${place.name}</p>
       <p><strong>Address:</strong> ${place.formatted_address}</p>
       <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
       <p><strong>Open Now:</strong> ${openingHours}</p>
       <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
       <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
-    `;
+      
+      </div>`;
+      
   }
 
   function clearMarkers() {
