@@ -10,11 +10,18 @@ require_once './db_connection.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Hiking Activities</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
+  </head>
 
 <body>
-
+<header class="header">
+    <div class="nav">
+        <a href="contact.html">Contact Us</a>
+        <a href="stories.php">Stories</a>
+        <a href="services.php">Services</a>
+        <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
+      </div>
+</header>
+<img src="images/hiking.jpg" alt="hiking page banner" style="height: 800px; width: 100%;">
     <div class="energy-level">
         <h2>Hiking Activities</h2>
         <p>Enter your desired distance from current location:</p>
@@ -25,32 +32,29 @@ require_once './db_connection.php';
         </div>
     </div>
 
-        <div class="map-container">
-            <div id="map" style="height: 400px; width: 50%;"></div>
-            <div id="place-details" class="results-container">
-            <div id="content">
+    <div class="map-container">
+        <div id="map" style="height: 400px; width: 50%;"></div>
+        <div id="place-details" class="results-container"></div>
+        <div id="content">
             <?php
-
-$sql = "SELECT * FROM `free_activities` WHERE `activity` = 'hiking'";
-
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-
-  while ($row = $result->fetch_assoc()) {
-    echo '<p><strong>Name:</strong>' . $row['name'] . '</p>
-                  <p><strong>Address:</strong> <a href=' . $row['map_link'] . '>' . $row['address'] . '</a></p>
-                  <p><strong>Rating:</strong> ' . $row['rating'] . '</p>
-                  <p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>
-                  <p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>
-                  <img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
-  }
-}
-
-?>
+                $sql = "SELECT * FROM `free_activities` WHERE `activity` = 'hiking'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<div class="activity-container">';
+                        echo '<p><strong>Name:</strong>' . $row['name'] . '</p>';
+                        echo '<p><strong>Address:</strong> <a href="' . $row['map_link'] . '">' . $row['address'] . '</a></p>';
+                        echo '<p><strong>Rating:</strong> ' . $row['rating'] . '</p>';
+                        echo '<p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>';
+                        echo '<p><strong>Rates:</strong> ' . $row['rates'] . '</p>';
+                        echo '<p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>';
+                        echo '<img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
+                        echo '</div>';
+                    }
+                }
+            ?>
         </div>
     </div>
-
     <script>
         let map;
     let service;
@@ -93,32 +97,28 @@ if ($result->num_rows > 0) {
     }
 
     function searchNearbyActivities(activityType) {
-        const distance = document.getElementById("distance").value;
+        clearMarkers();
+    const request = {
+      location: map.getCenter(),
+      radius: 1000, // Set a default radius (in meters)
+      query: activityType,
+    };
 
-        if (!distance || isNaN(distance) || distance <= 0) {
-            alert("Please enter a valid distance (in meters).");
-            return;
-        }
-        const request = {
-            location: map.getCenter(),
-            radius: distance,
-            query: 'hiking',
-        };
-
-        service = new google.maps.places.PlacesService(map);
-        service.textSearch(request, callback);
-    }
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
+  }
 
     function callback(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-            clearMarkers();
-            for (let i = 0; i < results.length; i++) {
-                if (!freeOnly || (results[i].price_level === 0 && results[i].rating >= 3)) {
-                    createMarker(results[i]);
-                }
-            }
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (let i = 0; i < results.length; i++) {
+        if (!freeOnly || (results[i].price_level === 0)) {
+          createMarker(results[i]);
         }
+      }
+    } else {
+      alert("No hiking activities found nearby. Please try again later or adjust your search settings.");
     }
+  }
 
     function createMarker(place) {
         const marker = new google.maps.Marker({
@@ -147,13 +147,15 @@ if ($result->num_rows > 0) {
         }
 
         detailsContainer.innerHTML = `
+        <div class="activity-container">
       <p><strong>Name:</strong> ${place.name}</p>
       <p><strong>Address:</strong> ${place.formatted_address}</p>
       <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
       <p><strong>Open Now:</strong> ${openingHours}</p>
+      <p><strong>Rates:</strong> ${place.rates ? place.rates : 'N/A'}</p>
       <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
       <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
-    `;
+      </div>`;
     }
 
     function clearMarkers() {
@@ -175,6 +177,10 @@ if ($result->num_rows > 0) {
             $("#content").hide();
         }
     }
+
+    $(document).ready(function() {
+            $("#content").hide();
+        });
 
 
     </script>
