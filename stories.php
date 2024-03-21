@@ -8,6 +8,11 @@ if (!$_SESSION['fullName']) {
     header('Location:services.php');
 }
 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validate and process the story submission (You can implement this in submit_story.php)
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +25,7 @@ if (!$_SESSION['fullName']) {
 </head>
 <body>
     <div class="header">
-        <img src="#" alt="FitFinder Logo" class="logo">
+        <a href="stories.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
         <div class="nav-stories">
           <a href="contact.html">Contact Us</a>
           <a href="stories.php">Stories</a>
@@ -29,47 +34,6 @@ if (!$_SESSION['fullName']) {
     </div>
 
     
-    <!-- Story 1 -->
-    <div class="story-container">
-        <h2>Exploring the Mountains of Nepal</h2>
-        <div class="story-content">
-            <img src="mountains.jpg" alt="Mountains in Nepal">
-            <p><strong>Place Name:</strong> Himalayas</p>
-            <p><strong>Date of Travel:</strong> February 2023</p>
-            <p><strong>Photos:</strong> <a href="#">View Photos</a></p>
-            <p><strong>Rating:</strong> 5</p>
-            <p><strong>What I Liked:</strong> The breathtaking views and serene atmosphere.</p>
-            <p><strong>Additional Notes:</strong> A life-changing experience that I'll never forget.</p>
-        </div>
-    </div>
-
-    <!-- Story 2 -->
-    <div class="story-container alternate">
-        <h2>Island Hopping in Thailand</h2>
-        <div class="story-content">
-            <img src="beach.jpg" alt="Beach in Thailand">
-            <p><strong>Place Name:</strong> Koh Phi Phi</p>
-            <p><strong>Date of Travel:</strong> July 2022</p>
-            <p><strong>Photos:</strong> <a href="#">View Photos</a></p>
-            <p><strong>Rating:</strong> 4</p>
-            <p><strong>What I Liked:</strong> Crystal-clear waters and vibrant marine life.</p>
-            <p><strong>Additional Notes:</strong> A paradise on earth, perfect for relaxation.</p>
-        </div>
-    </div>
-
-    <!-- Story 3 -->
-    <div class="story-container">
-        <h2>Adventures in the Amazon Rainforest</h2>
-        <div class="story-content">
-            <img src="amazon.jpg" alt="Amazon Rainforest">
-            <p><strong>Place Name:</strong> Amazon Rainforest</p>
-            <p><strong>Date of Travel:</strong> May 2021</p>
-            <p><strong>Photos:</strong> <a href="#">View Photos</a></p>
-            <p><strong>Rating:</strong> 5</p>
-            <p><strong>What I Liked:</strong> Immersion in nature and encounters with wildlife.</p>
-            <p><strong>Additional Notes:</strong> An unforgettable adventure filled with wonder and discovery.</p>
-        </div>
-    </div>
 
     <?php
 
@@ -88,7 +52,7 @@ if (!$_SESSION['fullName']) {
             echo "<div class='story-container'>
           
           <div class='story-content'>
-            <img src=" . "uploads/" . $row['image'] . " alt='Amazon Rainforest' style='width:150px;height:100px;'/>
+            <img src=" . "images/" . $row['image'] . " alt='' style='width:150px;height:100px;'/>
             <p><strong>Place Name:</strong>" . $row['place_name'] . "</p>
             <p><strong>Date of Travel:</strong> " . $row['date_of_travel'] . "</p>
             <p><strong>Rating:</strong> " . $row['rating'] . "</p>
