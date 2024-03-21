@@ -151,6 +151,7 @@ if ($result->num_rows > 0) {
     }
 
     detailsContainer.innerHTML = `
+    <div class="activity-container">
       <p><strong>Name:</strong> ${place.name}</p>
       <p><strong>Address:</strong> ${place.formatted_address}</p>
       <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
@@ -158,6 +159,7 @@ if ($result->num_rows > 0) {
       <p><strong>Rates:</strong> ${place.rates ? place.rates : 'N/A'}</p>
       <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
       <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
+      </div>
     `;
   }
 
