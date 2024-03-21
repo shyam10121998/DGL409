@@ -17,7 +17,7 @@ require_once './db_connection.php';
         <a href="contact.html">Contact Us</a>
         <a href="stories.php">Stories</a>
         <a href="services.php">Services</a>
-        <img src="#" alt="FitFinder Logo" class="logo">
+        <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
       </div>
 </header>
 
@@ -35,7 +35,7 @@ require_once './db_connection.php';
 <div class="map-container">
   <div id="map" style="height: 400px; width: 50%;"></div>
   <div id="place-details" class="results-container"></div>
-  <div id="content">
+  <div id="content" >
   <?php
 
 $sql = "SELECT * FROM `free_activities` WHERE `activity` = 'swimming'";
@@ -50,6 +50,7 @@ if ($result->num_rows > 0) {
                           echo '<p><strong>Address:</strong> <a href="' . $row['map_link'] . '">' . $row['address'] . '</a></p>';
                           echo '<p><strong>Rating:</strong> ' . $row['rating'] . '</p>';
                           echo '<p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>';
+                          echo '<p><strong>Rates:</strong> ' . $row['rates'] . '</p>';
                           echo '<p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>';
                           echo '<img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
                           echo '</div>';// reference AI
@@ -113,15 +114,13 @@ if ($result->num_rows > 0) {
 
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      clearMarkers();
       for (let i = 0; i < results.length; i++) {
-        if (!freeOnly || (results[i].price_level === 0 && results[i].rating >= 3)) {
+        if (!freeOnly || (results[i].price_level === 0)) {
           createMarker(results[i]);
         }
       }
-    }
-    else {
-      alert("No swimming trails found nearby. Please try again later or adjust your search settings.");
+    } else {
+      alert("No swimming activities found nearby. Please try again later or adjust your search settings.");
     }
   }
 
@@ -158,6 +157,7 @@ if ($result->num_rows > 0) {
       <p><strong>Address:</strong> ${place.formatted_address}</p>
       <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
       <p><strong>Open Now:</strong> ${openingHours}</p>
+      <p><strong>Rates:</strong> ${place.rates ? place.rates : 'N/A'}</p>
       <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
       <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
       </div>`;
@@ -172,7 +172,7 @@ if ($result->num_rows > 0) {
   }
 
   function toggleFree() {
-    freeOnly = !freeOnly;
+    freeOnly = !freeOnly; 
     const contentDiv = document.getElementById("content");
       contentDiv.hidden = !event.target.checked;
       if (event.target.checked) {
@@ -181,6 +181,10 @@ if ($result->num_rows > 0) {
         $("#content").hide();
       }
   }
+
+  $(document).ready(function() {
+            $("#content").hide();
+        });
 </script>
 
 <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtOEtcnrjVWnTea8XNCQ52KUOAb0_US8o&callback=initMap&libraries=places"></script>

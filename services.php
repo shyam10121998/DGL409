@@ -41,21 +41,19 @@
             <img src="images/weight-lifting-1284616_1920.jpg" alt="Image 6">
         </div>
     </div>
-    <img src="#" alt="FitFinder Logo" class="logo">
+    <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
 </div>
 
  <!-- Energy Level Content -->
  <div class="energy-level">
-    <h2>Hey   <?php session_start();
-      ($_SESSOION['fullName'] ? $_SESSOION['fullName'] : 'VISITOR') ?>!  we will help you finding perfect fit for you <br> What's Your Energy Level?</h2>
+    <h2>Hey user!  <h3>We'll help you find the perfect fit for you.</h3> <br> What's Your Energy Level?</h2>
     <div class="level-options">
       <a href="high.html" class="level high">High</a>
       <a href="moderate.html" class="level moderate">Moderate</a>
       <a href="low.html" class="level low">Low</a>
     </div>
-    <h2>or</h2>
+    <h3>or</h3>
     <h2>You can search anything of your choice</h2>
-    <p>Enter your desired distance from current location:</p>
     <div class="search-container">
       <input type="text" id="place" placeholder="Enter a place or activity">
       <input type="text" id="distance" placeholder="Distance (in meters)">
@@ -66,8 +64,10 @@
 
   <div class="map-container">
     <div id="map" style="height: 400px; width: 50%;"></div>
-    <div id="place-details" class="results-container"></div>
+    <div id="place-details" class="activity-container"></div>
 </div>
+
+
 
   <script>
     let map;

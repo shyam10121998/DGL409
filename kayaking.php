@@ -19,7 +19,7 @@ require_once './db_connection.php';
         <a href="contact.html">Contact Us</a>
         <a href="stories.php">Stories</a>
         <a href="services.php">Services</a>
-        <img src="#" alt="FitFinder Logo" class="logo">
+        <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
       </div>
 </header>
 
@@ -54,6 +54,7 @@ require_once './db_connection.php';
                           echo '<p><strong>Address:</strong> <a href="' . $row['map_link'] . '">' . $row['address'] . '</a></p>';
                           echo '<p><strong>Rating:</strong> ' . $row['rating'] . '</p>';
                           echo '<p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>';
+                          echo '<p><strong>Rates:</strong> ' . $row['rates'] . '</p>';
                           echo '<p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>';
                           echo '<img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
                           echo '</div>';// reference AI
@@ -159,6 +160,7 @@ require_once './db_connection.php';
       <p><strong>Address:</strong> ${place.formatted_address}</p>
       <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
       <p><strong>Open Now:</strong> ${openingHours}</p>
+      <p><strong>Rates:</strong> ${place.rates ? place.rates : 'N/A'}</p>
       <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
       <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
       
