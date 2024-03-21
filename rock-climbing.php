@@ -15,19 +15,29 @@ require_once './db_connection.php';
 </head>
 
 <body>
+<header class="header">
+    <div class="nav">
+        <a href="contact.html">Contact Us</a>
+        <a href="stories.php">Stories</a>
+        <a href="services.php">Services</a>
+        <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
+      </div>
+</header>
+
+<img src="images/rockclimbing.jpg" style="height: 800px; width: 100%;">
 
     <div class="energy-level">
-        <h2>Gyming Activities</h2>
+        <h2>rock-climbing Activities</h2>
         <p>Enter your desired distance from current location:</p>
         <div class="search-container">
-            <button onclick="searchNearbyActivities('gym')">Search Nearby Gyming Activities</button>
+            <button onclick="searchNearbyActivities('rock-climbing')">Search Nearby rock-climbing Activities</button>
             <label for="free-toggle">Free Only:</label>
             <input type="checkbox" id="free-toggle" onchange="toggleFree()">
         </div>
     </div>
 
         <div class="map-container">
-            <div id="map" style="height: 400px; width: 100%;"></div>
+            <div id="map" style="height: 400px; width: 50%;"></div>
             <div id="place-details" class="results-container"> </div>
             <div id="content">
             <?php
@@ -39,13 +49,16 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
-        echo '<p><strong>Name:</strong>' . $row['name'] . '</p>
-          <p><strong>Address:</strong> <a href=' . $row['map_link'] . '>' . $row['address'] . '</a></p>
-          <p><strong>Rating:</strong> ' . $row['rating'] . '</p>
-          <p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>
-          <p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>
-          <img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
-    }
+        echo '<div class="activity-container">';
+        echo '<p><strong>Name:</strong>' . $row['name'] . '</p>';
+        echo '<p><strong>Address:</strong> <a href="' . $row['map_link'] . '">' . $row['address'] . '</a></p>';
+        echo '<p><strong>Rating:</strong> ' . $row['rating'] . '</p>';
+        echo '<p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>';
+        echo '<p><strong>Rates:</strong> ' . $row['rates'] . '</p>';
+        echo '<p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>';
+        echo '<img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
+        echo '</div>';// reference AI
+     }
 }
 
 ?>
@@ -95,22 +108,16 @@ if ($result->num_rows > 0) {
         }
 
         function searchNearbyActivities(activityType) {
-            const distance = document.getElementById("distance").value;
+            clearMarkers();
+    const request = {
+      location: map.getCenter(),
+      radius: 1000, // Set a default radius (in meters)
+      query: activityType,
+    };
 
-            if (!distance || isNaN(distance) || distance <= 0) {
-                alert("Please enter a valid distance (in meters).");
-                return;
-            }
-
-            const request = {
-                location: map.getCenter(),
-                radius: distance,
-                query: activityType,
-            };
-
-            service = new google.maps.places.PlacesService(map);
-            service.textSearch(request, callback);
-        }
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
+  }
         
         function callback(results, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -152,12 +159,15 @@ if ($result->num_rows > 0) {
             }
 
             detailsContainer.innerHTML = `
+            <div class="activity-container">
       <p><strong>Name:</strong> ${place.name}</p>
       <p><strong>Address:</strong> ${place.formatted_address}</p>
       <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
       <p><strong>Open Now:</strong> ${openingHours}</p>
+      <p><strong>Rates:</strong> ${place.rates ? place.rates : 'N/A'}</p>
       <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
       <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
+      </div>
     `;
         }
 
@@ -179,6 +189,11 @@ if ($result->num_rows > 0) {
                 $("#content").hide();
             }
         }
+        $(document).ready(function() {
+            $("#content").hide();
+        });
     </script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtOEtcnrjVWnTea8XNCQ52KUOAb0_US8o&callback=initMap&libraries=places"></script>
+
 </body>
 </html>
