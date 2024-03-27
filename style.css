@@ -3,30 +3,45 @@
     background-color: white;
     }
 
-.slider-container {
-    width: 100%;
-}
+    /* banner */
 
-.slider {
-    display: flex;
-    width: 600%; 
-    animation: slide 20s linear infinite; 
-}
-
-.slider img {
-    width: 16.666%; 
-    height: 100vh;
-    object-fit: cover;
-}
-
-@keyframes slide {
-    0% {
-        transform: translateX(0);
+    .slider-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        height: 800px;
     }
-    100% {
-        transform: translateX(-100%);
+    
+    .slide {
+        position: relative;
     }
-}
+    
+    .slide img {
+        width: 100%;
+        height: 800px;
+    }
+    
+    .slide-content {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: white;
+    }
+    
+    .slider-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ffffff;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    
 
 .logo {
     margin-left: 47%;

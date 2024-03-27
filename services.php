@@ -30,16 +30,14 @@
 
 
     <div class="slider-container">
-        <div class="slider">
-            <img src="images/woman-1867074_1920.jpg" alt="Image 1">
-            <img src="images/crossfit-534615_1920.jpg" alt="Image 2">
-            <img src="images/family-3687187_1920.jpg" alt="Image 3">
-            <img src="images/nature-6967075_1920.jpg" alt="Image 4">
-            <img src="images/skateboard-7270418_1920.jpg" alt="Image 5">
-            <img src="images/weight-lifting-1284616_1920.jpg" alt="Image 6">
-        </div>
+          <div class="slide">
+              <img src="images/woman-1867074_1920.jpg" alt="Image 1">
+              <div class="slide-content">
+                  <h3>Discover FitFinder: Your journey to fitness starts here!</h3>
+                  <a href="#fitfinder-section" class="slider-button">Discover</a>
+              </div>
+          </div>
     </div>
-</div>
 
  <!-- Energy Level Content -->
  <div class="energy-level">
@@ -182,6 +180,8 @@
       }
       markers = [];
     }
+
+  
   </script>
   
   
