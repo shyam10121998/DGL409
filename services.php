@@ -25,12 +25,10 @@
 </head>
 <body>
 
-  <div class="header">
-    <div class="nav">
-      <a href="contact.html">Contact Us</a>
-      <a href="stories.php">Stories</a>
-      <a href="services.php">Services</a>
-    </div>
+<?php include 'header.php'; ?>
+
+
+
     <div class="slider-container">
         <div class="slider">
             <img src="images/woman-1867074_1920.jpg" alt="Image 1">
@@ -41,7 +39,6 @@
             <img src="images/weight-lifting-1284616_1920.jpg" alt="Image 6">
         </div>
     </div>
-    <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
 </div>
 
  <!-- Energy Level Content -->

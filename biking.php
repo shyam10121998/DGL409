@@ -12,13 +12,8 @@ require_once './db_connection.php';
 <title>Biking Activities</title>
 </head>
 <body>
-  <header class="header">
-    <div class="nav">
-        <a href="contact.html">Contact Us</a>
-        <a href="stories.html">Stories</a>
-        <a href="services.html">Services</a>
-        <img src="#" alt="FitFinder Logo" class="logo">
-      </div>
+<?php include 'header.php'; ?>
+
 </header>
  <img src="images/biking.webp" alt="biking page banner" style="height: 800px; width: 100%;">
     <div class="energy-level">

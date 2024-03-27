@@ -11,14 +11,8 @@ require_once './db_connection.php';
 <title>Meditation Activities</title>
 </head>
 <body>
-  <header class="header">
-    <div class="nav">
-        <a href="contact.html">Contact Us</a>
-        <a href="stories.html">Stories</a>
-        <a href="services.html">Services</a>
-        <a href="services.html"><img src="#" alt="FitFinder Logo" class="logo"></a>
-      </div>
-</header>
+<?php include 'header.php'; ?>
+
 
 <img src="images/meditate-1851165_1920.jpg" alt="meditation page banner" style="height: 800px; width: 100%;">
 <div class="energy-level">

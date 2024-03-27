@@ -24,16 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Document</title>
 </head>
 <body>
-    <div class="header">
-        <a href="stories.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
-        <div class="nav-stories">
-          <a href="contact.html">Contact Us</a>
-          <a href="stories.php">Stories</a>
-          <a href="services.php">Services</a>
-        </div>
-    </div>
-
-    
+<?php include 'header.php'; ?>
 
     <?php
 

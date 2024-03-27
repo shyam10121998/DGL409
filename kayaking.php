@@ -14,14 +14,8 @@ require_once './db_connection.php';
 <body>
 
 
-  <header class="header">
-    <div class="nav">
-        <a href="contact.html">Contact Us</a>
-        <a href="stories.php">Stories</a>
-        <a href="services.php">Services</a>
-        <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
-      </div>
-</header>
+<?php include 'header.php'; ?>
+
 
 <img src="images/kayaking.jpg" style="height: 800px; width: 100%;">
 

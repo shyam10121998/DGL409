@@ -12,15 +12,8 @@ require_once './db_connection.php';
     <title>Hiking Activities</title>
   </head>
 
-<body>
-<header class="header">
-    <div class="nav">
-        <a href="contact.html">Contact Us</a>
-        <a href="stories.php">Stories</a>
-        <a href="services.php">Services</a>
-        <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
-      </div>
-</header>
+  <?php include 'header.php'; ?>
+
 <img src="images/hiking.jpg" alt="hiking page banner" style="height: 800px; width: 100%;">
     <div class="energy-level">
         <h2>Hiking Activities</h2>

@@ -11,14 +11,8 @@ require_once './db_connection.php';
 <title>Gyming Activities</title>
 </head>
 <body>
+<?php include 'header.php'; ?>
 
-  <header class="header">
-    <div class="nav">
-        <a href="contact.html">Contact Us</a>
-        <a href="stories.php">Stories</a>
-        <a href="services.php">Services</a>
-        <a href="services.php"><img src="#" alt="FitFinder Logo" class="logo"></a>
-      </div>
 </header>
   <img src="images/gyming.jpg" alt="swimming page banner" style="height: 800px; width: 100%;">
    
