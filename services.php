@@ -39,8 +39,19 @@
           </div>
     </div>
 
+<!--info section-->
+
+<section id="fitfinder-section">
+    <div class="info">
+        <h2>Welcome to FitFinder</h2>
+        <p>Discover a world of fitness activities tailored to your interests and preferences. Whether you're into hiking, yoga, or swimming, FitFinder has something for everyone. Start your fitness journey today!</p>
+        <a href="#activities-section" class="btn">Explore Activities</a>
+    </div>
+</section>
+
+  
  <!-- Energy Level Content -->
- <div class="energy-level">
+ <div class="energy-level" id="activities-section">
     <h2>Hey user!  <h3>We'll help you find the perfect fit for you.</h3> <br> What's Your Energy Level?</h2>
     <div class="level-options">
       <a href="high.html" class="level high">High</a>
