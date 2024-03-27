@@ -41,6 +41,13 @@
         margin-top: 20px;
     }
 
+    .slider-button:hover{
+        background-color: #0e8fc7;
+        color: black;
+        transition: 0.8s ease;
+    }
+
+
     
 
 .logo {
