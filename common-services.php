@@ -44,12 +44,15 @@
             if ($result->num_rows > 0) {
 
                 while ($row = $result->fetch_assoc()) {
-                    echo '<p><strong>Name:</strong>' . $row['name'] . '</p>
-                  <p><strong>Address:</strong> <a href=' . $row['map_link'] . '>' . $row['address'] . '</a></p>
-                  <p><strong>Rating:</strong> ' . $row['rating'] . '</p>
-                  <p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>
-                  <p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>
-                  <img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
+                    echo '<div class="activity-container">';
+                    echo '<p><strong>Name:</strong>' . $row['name'] . '</p>';
+                    echo '<p><strong>Address:</strong> <a href="' . $row['map_link'] . '">' . $row['address'] . '</a></p>';
+                    echo '<p><strong>Rating:</strong> ' . $row['rating'] . '</p>';
+                    echo  '<p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>';
+                    echo '<p><strong>Rates:</strong> ' . $row['rates'] . '</p>';
+                    echo '<p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>';
+                    echo  '<img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
+                    echo '</div>';
                 }
             }
 
@@ -150,13 +153,16 @@
             }
 
             detailsContainer.innerHTML = `
+    <div class="activity-container">
+      
       <p><strong>Name:</strong> ${place.name}</p>
       <p><strong>Address:</strong> ${place.formatted_address}</p>
       <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
       <p><strong>Open Now:</strong> ${openingHours}</p>
+      <p><strong>Rates:</strong> ${place.rates ? place.rates : 'N/A'}</p>
       <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
       <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
-    `;
+      </div>`;
         }
 
         function clearMarkers() {
