@@ -42,16 +42,20 @@
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-
+                echo '<p>Free activities are below:</p>';
                 while ($row = $result->fetch_assoc()) {
-                    echo '<div class="activity-container">';
+                    echo '<div class="place-details-container">';
+                    echo '<div class="place-details-text">';
                     echo '<p><strong>Name:</strong>' . $row['name'] . '</p>';
                     echo '<p><strong>Address:</strong> <a href="' . $row['map_link'] . '">' . $row['address'] . '</a></p>';
                     echo '<p><strong>Rating:</strong> ' . $row['rating'] . '</p>';
-                    echo  '<p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>';
+                    echo '<p><strong>Open Now:</strong> ' . $row['open_now'] . '</p>';
                     echo '<p><strong>Rates:</strong> ' . $row['rates'] . '</p>';
                     echo '<p><strong>Opening Hours:</strong><br> ' . $row['working_hours'] . '</p>';
-                    echo  '<img src="images/' . $row['image'] . '" alt="Place Photo" style="max-width: 500px; height: 400px;">';
+                    echo '</div>';
+                    echo '<div class="place-details-image">';
+                    echo '<img src="images/' . $row['image'] . '" alt="Place Photo">';
+                    echo '</div>';
                     echo '</div>';
                 }
             }
@@ -153,15 +157,18 @@
             }
 
             detailsContainer.innerHTML = `
-    <div class="activity-container">
-      
-      <p><strong>Name:</strong> ${place.name}</p>
-      <p><strong>Address:</strong> ${place.formatted_address}</p>
-      <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
-      <p><strong>Open Now:</strong> ${openingHours}</p>
-      <p><strong>Rates:</strong> ${place.rates ? place.rates : 'N/A'}</p>
-      <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
-      <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
+        <div class="place-details-container">
+        <div class="place-details-text">
+                <p><strong>Name:</strong> ${place.name}</p>
+                <p><strong>Address:</strong> ${place.formatted_address}</p>
+                <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
+                <p><strong>Open Now:</strong> ${openingHours}</p>
+                <p><strong>Rates:</strong> ${place.rates ? place.rates : 'N/A'}</p>
+                <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
+        </div>
+        <div class="place-details-image">
+                <img src="${photoUrl}" alt="Place Photo">
+        </div>
       </div>`;
         }
 
