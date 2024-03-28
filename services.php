@@ -178,12 +178,18 @@
     }
 
     detailsContainer.innerHTML = `
+    <div class="place-details-container">
+    <div class="place-details-text">
         <p><strong>Name:</strong> ${place.name}</p>
         <p><strong>Address:</strong> ${place.formatted_address}</p>
         <p><strong>Rating:</strong> ${place.rating ? place.rating : 'N/A'}</p>
         <p><strong>Open Now:</strong> ${openingHours}</p>
         <p><strong>Opening Hours:</strong><br> ${openingHours}</p>
-        <img src="${photoUrl}" alt="Place Photo" style="max-width: 500px; height: 400px;">
+        </div>
+    <div class="place-details-image">
+        <img src="${photoUrl}" alt="Place Photo">
+    </div>
+</div>
     `;
 }
 
