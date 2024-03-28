@@ -33,7 +33,7 @@
           <div class="slide">
               <img src="images/woman-1867074_1920.jpg" alt="Image 1">
               <div class="slide-content">
-                  <h3>Discover FitFinder: Your journey to fitness starts here!</h3>
+                  <h1>FitFinder: Your journey to fitness starts here!</h1>
                   <a href="#fitfinder-section" class="slider-button">Discover</a>
               </div>
           </div>
@@ -52,14 +52,16 @@
   
  <!-- Energy Level Content -->
  <div class="energy-level" id="activities-section">
-    <h2>Hey user!  <h3>We'll help you find the perfect fit for you.</h3> <br> What's Your Energy Level?</h2>
+ <div class="energy-level-content">
+    <h2>Find Your Fit</h2>
+    <p>Discover activities tailored to your energy level.</p>
     <div class="level-options">
-      <a href="high.html" class="level high">High</a>
-      <a href="moderate.html" class="level moderate">Moderate</a>
-      <a href="low.html" class="level low">Low</a>
+      <a href="high.html" class="level high">High energy</a>
+      <a href="moderate.html" class="level moderate">Moderate energy</a>
+      <a href="low.html" class="level low">Low energy</a>
     </div>
-    <h3>or</h3>
-    <h2>You can search anything of your choice</h2>
+    <div class="separator"></div>
+    <h3>Or Search Any Activity:</h3>
     <div class="search-container">
       <input type="text" id="place" placeholder="Enter a place or activity">
       <input type="text" id="distance" placeholder="Distance (in meters)">
@@ -67,6 +69,7 @@
   </div>
 
   </div>
+ </div>
 
   <div class="map-container">
     <div id="map" style="height: 400px; width: 50%;"></div>
