@@ -645,6 +645,7 @@ input[type="submit"]:hover {
 }
 .story-form-container label {
     margin-bottom: 10px;
+    display: block;
 }
 
 .story-form-container input[type="text"],
@@ -652,6 +653,8 @@ input[type="submit"]:hover {
 .story-form-container input[type="number"],
 .story-form-container textarea {
     padding: 10px;
+    box-sizing: border-box; 
+    width: 100%;
     margin-bottom: 15px;
     border: 1px solid #0E8FC7;
     border-radius: 5px;
@@ -659,6 +662,7 @@ input[type="submit"]:hover {
 }
 
 .story-form-container input[type="file"] {
+    width: 100%;
     margin-bottom: 15px;
 }
 
@@ -668,7 +672,7 @@ input[type="submit"]:hover {
 
 .story-form-container button[type="submit"] {
     padding: 10px 20px;
-    background-color: orangered;
+    background-color: #0E8FC7;
     color: white;
     border: none;
     border-radius: 5px;
@@ -676,15 +680,20 @@ input[type="submit"]:hover {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     align-self: center;
+    width: auto; 
+    margin-top: 10px;
 }
 
 .story-form-container button[type="submit"]:hover {
     background-color: black;
+    transition: 0.8s ease;
 }
 
 /* Story Containers */
 .story-container {
     display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-bottom: 20px; 
     transition: transform 0.3s ease;
 }
