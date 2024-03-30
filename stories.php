@@ -37,6 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result->num_rows > 0) {
 
+      echo "<div class='intro-text'>
+      <h2>Share your experiences below and let others know about your adventures!</h2>
+  </div>";
 
         while ($row = $result->fetch_assoc()) {
 

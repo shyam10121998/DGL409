@@ -725,3 +725,7 @@ input[type="submit"]:hover {
 .story-content strong {
     color: #333;
   }
+
+  .intro-text {
+    text-align: center;
+}
