@@ -738,3 +738,15 @@ input[type="submit"]:hover {
   .intro-text {
     text-align: center;
 }
+
+.about img{
+    height: 900px;
+    width: 100%;
+}
+
+.about p{
+    color: #0E8FC7;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+}
