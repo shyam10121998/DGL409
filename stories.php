@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <?php include 'header.php'; ?>
 
+
     <?php
 
     $selectSql = "SELECT * from `stories` ";
