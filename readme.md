@@ -39,3 +39,10 @@ MySQL
 
 Shyam Rachchh
 
+--> Github url:
+
+https://github.com/shyam10121998/DGL409
+
+--> cpanel link:
+
+https://srachchh.imgd.ca/dgl409.srachchh.imgd.ca/
