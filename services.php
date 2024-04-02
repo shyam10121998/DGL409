@@ -70,19 +70,46 @@
     </div>
     <div class="separator"></div>
     <h3>Or Search Any Activity:</h3>
-    <div class="search-container">
-      <input type="text" id="place" placeholder="Enter a place or activity">
-      <input type="text" id="distance" placeholder="Distance (in meters)">
-      <button onclick="searchNearbyPlaces()">Search Nearby Places</button>
-  </div>
-
-  </div>
+ </div>
  </div>
 
-  <div class="map-container">
-    <div id="map" style="height: 400px; width: 50%;"></div>
-    <div id="place-details" class="activity-container"></div>
-</div>
+ 
+ <div class="activity-container">
+        <div class="activity-grid">
+            <div class="activity">
+                <img src="images/kayaking.jpg" alt="">
+                <a href="common-services.php?activity=kayaking">Kayaking</a>
+            </div>
+            <div class="activity">
+                <img src="images/zumba.jpg" alt="">
+                <a href="common-services.php?activity=zumba">Zumba</a>
+            </div>
+            <div class="activity">
+                <img src="images/aerobics.jpg" alt="">
+                <a href="common-services.php?activity=aerobics">Aerobics</a>
+            </div>
+            <div class="activity">
+                <img src="images/swimming.jpg" alt="">
+                <a href="common-services.php?activity=swimming">Swimming</a>
+            </div>
+            <div class="activity">
+                <img src="images/gym.jpg" alt="">
+                <a href="common-services.php?activity=gym">Gyming</a>
+            </div>
+            <div class="activity">
+            <img src="images/walking.jpg" alt="">
+                <a href="common-services.php?activity=walking">Walking</a>
+            </div>
+            <div class="activity">
+                <img src="images/meditation.jpg" alt="">
+                <a href="common-services.php?activity=meditation">Meditation</a>
+            </div>
+            <div class="activity">
+                <img src="images/pickleball.jpg" alt="">
+                <a href="common-services.php?activity=pickleball">Pickleball</a>
+            </div>
+        </div>
+    </div>
 
 
 
