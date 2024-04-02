@@ -5,7 +5,7 @@ session_start();
 require_once './db_connection.php';
 
 if (!$_SESSION['fullName']) {
-    header('Location:services.php');
+    header('Location:index.php');
 }
 
 
